@@ -7,6 +7,26 @@
     <title>A Magical Invitation 🐍</title>
 
     <style>
+        /* =================================
+           SLYTHERIN COLOR PALETTE
+           ================================= */
+
+        :root {
+            --midnight-forest: #06140F;
+            --deep-forest: #10291E;
+            --dark-jade: #10291E;
+            --enchanted-forest: #1A4030;
+            --emerald: #286747;
+            --bright-emerald: #3D8B60;
+            --antique-silver: #A8B5AA;
+            --moonlight-silver: #E0E7E1;
+            --sage-gray: #A8B8AC;
+        }
+
+        /* =================================
+           GENERAL PAGE DESIGN
+           ================================= */
+
         * {
             box-sizing: border-box;
         }
@@ -14,32 +34,44 @@
         body {
             margin: 0;
             min-height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 25px 0;
+
+            padding: 30px 0;
+
             font-family: Georgia, "Times New Roman", serif;
+            color: var(--moonlight-silver);
+
             background:
                 radial-gradient(
-                    circle at top,
-                    #24543b 0%,
-                    #102e20 45%,
-                    #06150e 100%
+                    ellipse at 50% 0%,
+                    #24543B 0%,
+                    #10291E 35%,
+                    #06140F 75%,
+                    #020906 100%
                 );
+
             overflow-x: hidden;
-            color: #e0e7df;
         }
 
-        /* Floating magical particles */
+        /* =================================
+           FLOATING MAGICAL PARTICLES
+           ================================= */
 
         .particle {
             position: fixed;
-            bottom: -30px;
+            bottom: -40px;
+
             pointer-events: none;
-            color: #c7d9c7;
-            opacity: 0;
-            animation: floatUp linear forwards;
             z-index: 0;
+
+            color: var(--antique-silver);
+
+            opacity: 0;
+
+            animation: floatUp linear forwards;
         }
 
         @keyframes floatUp {
@@ -52,7 +84,7 @@
                 opacity: 0.8;
             }
 
-            85% {
+            80% {
                 opacity: 0.6;
             }
 
@@ -62,36 +94,43 @@
             }
         }
 
-        /* Main invitation card */
+        /* =================================
+           MAIN INVITATION CARD
+           ================================= */
 
         .card {
             position: relative;
             z-index: 1;
+
             width: 90%;
             max-width: 440px;
+
             padding: 35px 25px;
+
             text-align: center;
 
             background: linear-gradient(
                 145deg,
-                rgba(20, 48, 33, 0.97),
-                rgba(8, 25, 16, 0.98)
+                #1A4030 0%,
+                #10291E 50%,
+                #0A1D14 100%
             );
 
-            border: 2px solid #a7b7a8;
+            border: 1px solid var(--antique-silver);
             border-radius: 12px;
 
             box-shadow:
-                0 0 15px rgba(150, 190, 155, 0.12),
-                0 0 40px rgba(0, 0, 0, 0.5);
+                0 0 0 4px rgba(168, 181, 170, 0.06),
+                0 0 25px rgba(45, 115, 75, 0.20),
+                0 15px 50px rgba(0, 0, 0, 0.45);
 
-            animation: appear 1s ease;
+            animation: cardAppear 1s ease;
         }
 
-        @keyframes appear {
+        @keyframes cardAppear {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(25px);
             }
 
             to {
@@ -100,53 +139,482 @@
             }
         }
 
-        /* Decorative border */
+        /* =================================
+           INNER SILVER BORDER
+           ================================= */
 
         .inner-border {
-            border: 1px solid rgba(192, 205, 192, 0.35);
+            border: 1px solid rgba(168, 181, 170, 0.45);
+
             padding: 25px 15px;
+
             border-radius: 6px;
         }
 
+        /* =================================
+           SNAKE DECORATION
+           ================================= */
+
         .snake {
             font-size: 55px;
-            margin-bottom: 5px;
-            filter: drop-shadow(0 0 10px rgba(126, 200, 145, 0.3));
+            margin-bottom: 8px;
+
+            filter: drop-shadow(
+                0 0 12px rgba(126, 200, 145, 0.3)
+            );
+
+            animation: snakeGlow 3s ease-in-out infinite;
         }
 
+        @keyframes snakeGlow {
+            0%, 100% {
+                filter: drop-shadow(
+                    0 0 8px rgba(126, 200, 145, 0.15)
+                );
+            }
+
+            50% {
+                filter: drop-shadow(
+                    0 0 18px rgba(126, 200, 145, 0.45)
+                );
+            }
+        }
+
+        /* =================================
+           HEADINGS AND TEXT
+           ================================= */
+
         .house {
-            font-family: Georgia, serif;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 5px;
-            color: #b6c5b6;
+
+            color: var(--antique-silver);
+
             text-transform: uppercase;
+
             margin-bottom: 25px;
         }
 
         .divider {
-            color: #a7b7a8;
+            color: var(--antique-silver);
+
             letter-spacing: 8px;
-            margin: 18px 0;
+
+            margin: 20px 0;
         }
 
         h1 {
             font-size: 29px;
-            line-height: 1.4;
-            color: #d8e5d5;
+            line-height: 1.5;
+
             font-weight: normal;
+
+            color: var(--moonlight-silver);
+
             margin: 15px 0;
-            text-shadow: 0 0 15px rgba(157, 207, 164, 0.15);
+
+            text-shadow:
+                0 0 15px rgba(157, 207, 164, 0.12);
         }
 
         .subtitle {
             font-size: 15px;
             line-height: 1.8;
-            color: #bac9bb;
+
+            color: var(--sage-gray);
+
             margin: 15px 0;
         }
 
         .letter {
             font-size: 14px;
             line-height: 1.9;
-            color: #d2ddd1;
-            margin: 20px 0;
+
+            color: #D2DDD3;
+
+            margin: 25px 0;
+        }
+
+        /* =================================
+           BUTTONS
+           ================================= */
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 15px;
+
+            min-height: 55px;
+
+            margin-top: 25px;
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+
+            padding: 13px 23px;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        /* YES BUTTON */
+
+        #yesBtn {
+            background: linear-gradient(
+                135deg,
+                #3D8B60,
+                #205638
+            );
+
+            color: #F0F5F0;
+
+            border: 1px solid var(--antique-silver);
+
+            box-shadow:
+                0 0 15px rgba(61, 139, 96, 0.2);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 22px rgba(108, 196, 128, 0.45);
+        }
+
+        /* NO BUTTON */
+
+        #noBtn {
+            background: #C2C9C2;
+
+            color: #183323;
+
+            border: 1px solid #E1E6E1;
+        }
+
+        #noBtn.running {
+            position: fixed;
+            z-index: 10;
+
+            transition:
+                left 0.15s ease,
+                top 0.15s ease;
+        }
+
+        /* =================================
+           SUCCESS MESSAGE
+           ================================= */
+
+        #message {
+            display: none;
+
+            margin-top: 25px;
+
+            font-size: 18px;
+            line-height: 1.9;
+
+            color: #D9EAD5;
+
+            animation: cardAppear 0.8s ease;
+        }
+
+        .celebration-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            color: var(--sage-gray);
+
+            font-size: 12px;
+            line-height: 1.8;
+
+            margin-top: 30px;
+
+            font-style: italic;
+        }
+
+        /* =================================
+           MOBILE RESPONSIVENESS
+           ================================= */
+
+        @media (max-width: 380px) {
+            .card {
+                padding: 20px 15px;
+            }
+
+            .inner-border {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            button {
+                padding: 12px 19px;
+                font-size: 14px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .card,
+            .snake,
+            .particle {
+                animation: none;
+            }
+
+            button {
+                transition: none;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MAIN INVITATION -->
+
+    <div class="card">
+
+        <div class="inner-border">
+
+            <div class="snake">🐍</div>
+
+            <div class="house">
+                A Magical Invitation
+            </div>
+
+            <div class="divider">
+                ✦ ─── ✦
+            </div>
+
+            <h1 id="question">
+                May I Take You on a Date?
+            </h1>
+
+            <p class="subtitle" id="subtitle">
+                An important question awaits you...
+            </p>
+
+            <div class="letter" id="letter">
+
+                Of all the things magic can do,<br>
+                there's one thing I'd rather do with you.<br><br>
+
+                So, may I have the honor of taking you<br>
+                on a little date? 💚
+
+            </div>
+
+            <!-- YES AND NO BUTTONS -->
+
+            <div class="buttons" id="buttons">
+
+                <button id="yesBtn">
+                    YES 💚
+                </button>
+
+                <button id="noBtn">
+                    NO 🙈
+                </button>
+
+            </div>
+
+            <!-- MESSAGE AFTER YES -->
+
+            <div id="message">
+
+                <div class="celebration-icon">
+                    💚🐍✨
+                </div>
+
+                <strong>IT'S A DATE!</strong>
+
+                <br>
+
+                Mischief managed. 😉
+
+                <br><br>
+
+                You've just made my day.
+
+                <br>
+
+                I can't wait to see you! 💚
+
+            </div>
+
+            <div class="divider">
+                ✦ ─── ✦
+            </div>
+
+            <div class="signature">
+                An invitation sealed with a little magic.
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        // =================================
+        // GET PAGE ELEMENTS
+        // =================================
+
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+
+        const question = document.getElementById("question");
+        const subtitle = document.getElementById("subtitle");
+
+        const letter = document.getElementById("letter");
+        const buttons = document.getElementById("buttons");
+        const message = document.getElementById("message");
+
+
+        // =================================
+        // MAKE THE NO BUTTON RUN AWAY
+        // =================================
+
+        function moveNoButton() {
+
+            const padding = 15;
+
+            const maxX =
+                window.innerWidth - noBtn.offsetWidth - padding;
+
+            const maxY =
+                window.innerHeight - noBtn.offsetHeight - padding;
+
+            const x =
+                padding +
+                Math.random() * Math.max(0, maxX - padding);
+
+            const y =
+                padding +
+                Math.random() * Math.max(0, maxY - padding);
+
+            noBtn.classList.add("running");
+
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+
+        // Escape when the mouse approaches.
+
+        noBtn.addEventListener("pointerenter", moveNoButton);
+
+        // Escape when clicked or touched.
+
+        noBtn.addEventListener("pointerdown", function(event) {
+
+            event.preventDefault();
+
+            moveNoButton();
+
+        });
+
+        // Additional support for touchscreens.
+
+        noBtn.addEventListener("touchstart", function(event) {
+
+            event.preventDefault();
+
+            moveNoButton();
+
+        }, { passive: false });
+
+
+        // =================================
+        // YES BUTTON CELEBRATION
+        // =================================
+
+        yesBtn.addEventListener("click", function() {
+
+            question.textContent = "YOU SAID YES! 💚";
+
+            subtitle.textContent =
+                "The magic worked after all.";
+
+            letter.style.display = "none";
+
+            buttons.style.display = "none";
+
+            message.style.display = "block";
+
+            // Create a burst of magical particles.
+
+            for (let i = 0; i < 45; i++) {
+
+                setTimeout(createParticle, i * 100);
+
+            }
+
+        });
+
+
+        // =================================
+        // FLOATING MAGICAL PARTICLES
+        // =================================
+
+        function createParticle() {
+
+            const particle = document.createElement("div");
+
+            particle.className = "particle";
+
+            const symbols = [
+                "💚",
+                "✨",
+                "🐍",
+                "✦",
+                "🍃",
+                "❈"
+            ];
+
+            particle.textContent =
+                symbols[Math.floor(Math.random() * symbols.length)];
+
+            particle.style.left = Math.random() * 100 + "vw";
+
+            particle.style.fontSize =
+                (12 + Math.random() * 18) + "px";
+
+            const duration = 3 + Math.random() * 4;
+
+            particle.style.animationDuration = duration + "s";
+
+            document.body.appendChild(particle);
+
+            setTimeout(function() {
+
+                particle.remove();
+
+            }, duration * 1000);
+
+        }
+
+
+        // =================================
+        // CONTINUOUS AMBIENT MAGIC
+        // =================================
+
+        setInterval(createParticle, 700);
+
+    </script>
+
+</body>
+</html>
