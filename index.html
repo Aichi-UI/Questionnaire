@@ -4,28 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A Magical Invitation 🐍</title>
+    <title>A Little Invitation 🐍</title>
 
     <style>
-        /* =================================
-           SLYTHERIN COLOR PALETTE
-           ================================= */
-
         :root {
-            --midnight-forest: #06140F;
-            --deep-forest: #10291E;
-            --dark-jade: #10291E;
-            --enchanted-forest: #1A4030;
-            --emerald: #286747;
-            --bright-emerald: #3D8B60;
-            --antique-silver: #A8B5AA;
-            --moonlight-silver: #E0E7E1;
-            --sage-gray: #A8B8AC;
-        }
+            --background: #050D09;
+            --emerald-glow: #163D2B;
 
-        /* =================================
-           GENERAL PAGE DESIGN
-           ================================= */
+            --card-dark: #11271D;
+            --card-light: #1B3A2B;
+
+            --silver: #A8B5AA;
+            --main-text: #E2E8E3;
+            --secondary-text: #A6B5A9;
+
+            --yes-green: #28734A;
+            --yes-hover: #34895B;
+
+            --no-silver: #C5CCC6;
+            --no-text: #17271D;
+        }
 
         * {
             box-sizing: border-box;
@@ -34,229 +32,145 @@
         body {
             margin: 0;
             min-height: 100vh;
+            min-height: 100dvh;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
-            padding: 30px 0;
+            padding: 25px 0;
 
             font-family: Georgia, "Times New Roman", serif;
-            color: var(--moonlight-silver);
+            color: var(--main-text);
 
             background:
                 radial-gradient(
                     ellipse at 50% 0%,
-                    #24543B 0%,
-                    #10291E 35%,
-                    #06140F 75%,
-                    #020906 100%
+                    var(--emerald-glow) 0%,
+                    #0C2117 35%,
+                    var(--background) 75%,
+                    #020604 100%
                 );
 
             overflow-x: hidden;
         }
 
-        /* =================================
-           FLOATING MAGICAL PARTICLES
-           ================================= */
-
-        .particle {
-            position: fixed;
-            bottom: -40px;
-
-            pointer-events: none;
-            z-index: 0;
-
-            color: var(--antique-silver);
-
-            opacity: 0;
-
-            animation: floatUp linear forwards;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-
-            15% {
-                opacity: 0.8;
-            }
-
-            80% {
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: translateY(-110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* =================================
-           MAIN INVITATION CARD
-           ================================= */
+        /* MAIN CARD */
 
         .card {
             position: relative;
-            z-index: 1;
 
             width: 90%;
             max-width: 440px;
 
-            padding: 35px 25px;
-
-            text-align: center;
+            padding: 12px;
 
             background: linear-gradient(
                 145deg,
-                #1A4030 0%,
-                #10291E 50%,
-                #0A1D14 100%
+                var(--card-light),
+                var(--card-dark) 55%,
+                #091810
             );
 
-            border: 1px solid var(--antique-silver);
+            border: 1px solid var(--silver);
             border-radius: 12px;
 
             box-shadow:
-                0 0 0 4px rgba(168, 181, 170, 0.06),
-                0 0 25px rgba(45, 115, 75, 0.20),
-                0 15px 50px rgba(0, 0, 0, 0.45);
+                0 0 0 4px rgba(168, 181, 170, 0.035),
+                0 0 35px rgba(37, 112, 69, 0.13),
+                0 20px 60px rgba(0, 0, 0, 0.45);
 
-            animation: cardAppear 1s ease;
+            animation: appear 0.8s ease;
         }
-
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* =================================
-           INNER SILVER BORDER
-           ================================= */
 
         .inner-border {
-            border: 1px solid rgba(168, 181, 170, 0.45);
+            padding: 30px 18px;
 
-            padding: 25px 15px;
-
+            border: 1px solid rgba(168, 181, 170, 0.35);
             border-radius: 6px;
+
+            text-align: center;
         }
 
-        /* =================================
-           SNAKE DECORATION
-           ================================= */
+        /* SLYTHERIN DECORATION */
 
         .snake {
-            font-size: 55px;
-            margin-bottom: 8px;
+            font-size: 48px;
+            margin-bottom: 12px;
 
             filter: drop-shadow(
-                0 0 12px rgba(126, 200, 145, 0.3)
+                0 0 10px rgba(104, 173, 125, 0.18)
             );
-
-            animation: snakeGlow 3s ease-in-out infinite;
         }
 
-        @keyframes snakeGlow {
-            0%, 100% {
-                filter: drop-shadow(
-                    0 0 8px rgba(126, 200, 145, 0.15)
-                );
-            }
-
-            50% {
-                filter: drop-shadow(
-                    0 0 18px rgba(126, 200, 145, 0.45)
-                );
-            }
-        }
-
-        /* =================================
-           HEADINGS AND TEXT
-           ================================= */
-
-        .house {
+        .eyebrow {
             font-size: 11px;
             letter-spacing: 5px;
-
-            color: var(--antique-silver);
-
             text-transform: uppercase;
 
-            margin-bottom: 25px;
+            color: var(--silver);
+
+            margin-bottom: 22px;
         }
 
         .divider {
-            color: var(--antique-silver);
+            color: var(--silver);
+            font-size: 13px;
+            letter-spacing: 7px;
 
-            letter-spacing: 8px;
-
-            margin: 20px 0;
+            margin: 22px 0;
         }
 
+        /* INVITATION TEXT */
+
         h1 {
+            color: var(--main-text);
+
             font-size: 29px;
-            line-height: 1.5;
-
+            line-height: 1.45;
             font-weight: normal;
-
-            color: var(--moonlight-silver);
 
             margin: 15px 0;
 
             text-shadow:
-                0 0 15px rgba(157, 207, 164, 0.12);
+                0 0 20px rgba(174, 205, 179, 0.08);
         }
 
         .subtitle {
+            color: var(--secondary-text);
+
             font-size: 15px;
             line-height: 1.8;
-
-            color: var(--sage-gray);
 
             margin: 15px 0;
         }
 
         .letter {
+            color: #D1DBD3;
+
             font-size: 14px;
             line-height: 1.9;
-
-            color: #D2DDD3;
 
             margin: 25px 0;
         }
 
-        /* =================================
-           BUTTONS
-           ================================= */
+        /* BUTTONS */
 
         .buttons {
             display: flex;
-
             justify-content: center;
             align-items: center;
 
             gap: 15px;
 
-            min-height: 55px;
+            min-height: 48px;
 
-            margin-top: 25px;
+            margin-top: 28px;
         }
 
         button {
-            border: none;
             border-radius: 5px;
-
-            padding: 13px 23px;
+            padding: 13px 25px;
 
             font-family: Georgia, "Times New Roman", serif;
             font-size: 15px;
@@ -264,6 +178,7 @@
             cursor: pointer;
 
             transition:
+                background 0.2s ease,
                 transform 0.2s ease,
                 box-shadow 0.2s ease;
         }
@@ -273,31 +188,32 @@
         #yesBtn {
             background: linear-gradient(
                 135deg,
-                #3D8B60,
-                #205638
+                var(--yes-hover),
+                var(--yes-green)
             );
 
-            color: #F0F5F0;
+            color: #F2F7F2;
 
-            border: 1px solid var(--antique-silver);
+            border: 1px solid #9CB7A1;
 
             box-shadow:
-                0 0 15px rgba(61, 139, 96, 0.2);
+                0 4px 15px rgba(40, 115, 74, 0.16);
         }
 
         #yesBtn:hover {
-            transform: scale(1.08);
+            background: var(--yes-hover);
+
+            transform: translateY(-2px);
 
             box-shadow:
-                0 0 22px rgba(108, 196, 128, 0.45);
+                0 5px 20px rgba(61, 139, 96, 0.25);
         }
 
         /* NO BUTTON */
 
         #noBtn {
-            background: #C2C9C2;
-
-            color: #183323;
+            background: var(--no-silver);
+            color: var(--no-text);
 
             border: 1px solid #E1E6E1;
         }
@@ -311,50 +227,60 @@
                 top 0.15s ease;
         }
 
-        /* =================================
-           SUCCESS MESSAGE
-           ================================= */
+        /* SUCCESS MESSAGE */
 
         #message {
             display: none;
 
             margin-top: 25px;
 
-            font-size: 18px;
+            color: var(--main-text);
+
+            font-size: 17px;
             line-height: 1.9;
 
-            color: #D9EAD5;
-
-            animation: cardAppear 0.8s ease;
+            animation: appear 0.6s ease;
         }
 
-        .celebration-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
+        .success-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
         }
 
         .signature {
-            color: var(--sage-gray);
+            color: var(--secondary-text);
 
             font-size: 12px;
+            font-style: italic;
             line-height: 1.8;
 
-            margin-top: 30px;
-
-            font-style: italic;
+            margin-top: 28px;
         }
 
-        /* =================================
-           MOBILE RESPONSIVENESS
-           ================================= */
+        /* CARD ENTRANCE */
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE DESIGN */
 
         @media (max-width: 380px) {
             .card {
-                padding: 20px 15px;
+                width: 92%;
+                padding: 8px;
             }
 
             .inner-border {
-                padding: 20px 10px;
+                padding: 24px 12px;
             }
 
             h1 {
@@ -369,8 +295,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             .card,
-            .snake,
-            .particle {
+            #message {
                 animation: none;
             }
 
@@ -378,27 +303,21 @@
                 transition: none;
             }
         }
-
     </style>
 </head>
 
 <body>
 
-    <!-- MAIN INVITATION -->
-
-    <div class="card">
-
+    <main class="card">
         <div class="inner-border">
 
             <div class="snake">🐍</div>
 
-            <div class="house">
-                A Magical Invitation
+            <div class="eyebrow">
+                A Special Invitation
             </div>
 
-            <div class="divider">
-                ✦ ─── ✦
-            </div>
+            <div class="divider">✦ ─── ✦</div>
 
             <h1 id="question">
                 May I Take You on a Date?
@@ -409,36 +328,20 @@
             </p>
 
             <div class="letter" id="letter">
-
                 Of all the things magic can do,<br>
                 there's one thing I'd rather do with you.<br><br>
 
                 So, may I have the honor of taking you<br>
                 on a little date? 💚
-
             </div>
-
-            <!-- YES AND NO BUTTONS -->
 
             <div class="buttons" id="buttons">
-
-                <button id="yesBtn">
-                    YES 💚
-                </button>
-
-                <button id="noBtn">
-                    NO 🙈
-                </button>
-
+                <button id="yesBtn">YES 💚</button>
+                <button id="noBtn">NO 🙈</button>
             </div>
 
-            <!-- MESSAGE AFTER YES -->
-
             <div id="message">
-
-                <div class="celebration-icon">
-                    💚🐍✨
-                </div>
+                <div class="success-icon">💚</div>
 
                 <strong>IT'S A DATE!</strong>
 
@@ -452,28 +355,19 @@
 
                 <br>
 
-                I can't wait to see you! 💚
-
+                I can't wait to see you!
             </div>
 
-            <div class="divider">
-                ✦ ─── ✦
-            </div>
+            <div class="divider">✦ ─── ✦</div>
 
             <div class="signature">
                 An invitation sealed with a little magic.
             </div>
 
         </div>
-
-    </div>
+    </main>
 
     <script>
-
-        // =================================
-        // GET PAGE ELEMENTS
-        // =================================
-
         const yesBtn = document.getElementById("yesBtn");
         const noBtn = document.getElementById("noBtn");
 
@@ -484,28 +378,23 @@
         const buttons = document.getElementById("buttons");
         const message = document.getElementById("message");
 
-
-        // =================================
-        // MAKE THE NO BUTTON RUN AWAY
-        // =================================
+        // NO button runs away when approached.
 
         function moveNoButton() {
-
             const padding = 15;
 
-            const maxX =
-                window.innerWidth - noBtn.offsetWidth - padding;
+            const maxX = Math.max(
+                padding,
+                window.innerWidth - noBtn.offsetWidth - padding
+            );
 
-            const maxY =
-                window.innerHeight - noBtn.offsetHeight - padding;
+            const maxY = Math.max(
+                padding,
+                window.innerHeight - noBtn.offsetHeight - padding
+            );
 
-            const x =
-                padding +
-                Math.random() * Math.max(0, maxX - padding);
-
-            const y =
-                padding +
-                Math.random() * Math.max(0, maxY - padding);
+            const x = padding + Math.random() * (maxX - padding);
+            const y = padding + Math.random() * (maxY - padding);
 
             noBtn.classList.add("running");
 
@@ -513,107 +402,41 @@
             noBtn.style.top = y + "px";
         }
 
-        // Escape when the mouse approaches.
+        // Desktop: move when the pointer approaches.
 
-        noBtn.addEventListener("pointerenter", moveNoButton);
-
-        // Escape when clicked or touched.
-
-        noBtn.addEventListener("pointerdown", function(event) {
-
-            event.preventDefault();
-
-            moveNoButton();
-
+        noBtn.addEventListener("pointerenter", function(event) {
+            if (event.pointerType === "mouse") {
+                moveNoButton();
+            }
         });
 
-        // Additional support for touchscreens.
+        // Touchscreens: move when touched.
 
         noBtn.addEventListener("touchstart", function(event) {
-
             event.preventDefault();
-
             moveNoButton();
-
         }, { passive: false });
 
+        // Prevent clicking NO from activating it.
 
-        // =================================
-        // YES BUTTON CELEBRATION
-        // =================================
+        noBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+            moveNoButton();
+        });
+
+        // YES button: show the success message.
+        // No floating hearts or particles are created.
 
         yesBtn.addEventListener("click", function() {
-
-            question.textContent = "IT'S A YES! 💚";
+            question.textContent = "YOU SAID YES! 💚";
 
             subtitle.textContent =
                 "The magic worked after all.";
 
             letter.style.display = "none";
-
             buttons.style.display = "none";
-
             message.style.display = "block";
-
-            // Create a burst of magical particles.
-
-            for (let i = 0; i < 45; i++) {
-
-                setTimeout(createParticle, i * 100);
-
-            }
-
         });
-
-
-        // =================================
-        // FLOATING MAGICAL PARTICLES
-        // =================================
-
-        function createParticle() {
-
-            const particle = document.createElement("div");
-
-            particle.className = "particle";
-
-            const symbols = [
-                "💚",
-                "✨",
-                "🐍",
-                "✦",
-                "🍃",
-                "❈"
-            ];
-
-            particle.textContent =
-                symbols[Math.floor(Math.random() * symbols.length)];
-
-            particle.style.left = Math.random() * 100 + "vw";
-
-            particle.style.fontSize =
-                (12 + Math.random() * 18) + "px";
-
-            const duration = 3 + Math.random() * 4;
-
-            particle.style.animationDuration = duration + "s";
-
-            document.body.appendChild(particle);
-
-            setTimeout(function() {
-
-                particle.remove();
-
-            }, duration * 1000);
-
-        }
-
-
-        // =================================
-        // CONTINUOUS AMBIENT MAGIC
-        // =================================
-
-        setInterval(createParticle, 700);
-
     </script>
 
 </body>
