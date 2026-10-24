@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>A Little Question for You 💗</title>
+    <title>A Magical Invitation 🐍</title>
 
     <style>
         * {
@@ -17,201 +17,136 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: "Trebuchet MS", sans-serif;
-            background: linear-gradient(135deg, #0a2e1b, #1b4332, #081c15);
-            overflow: hidden;
+            padding: 25px 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(
+                    circle at top,
+                    #24543b 0%,
+                    #102e20 45%,
+                    #06150e 100%
+                );
+            overflow-x: hidden;
+            color: #e0e7df;
         }
 
-        .card {
-            width: 90%;
-            max-width: 420px;
-            padding: 40px 24px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 25px;
-            box-shadow: 0 10px 35px rgba(255, 105, 150, 0.2);
-            text-align: center;
-        }
+        /* Floating magical particles */
 
-        .heart {
-            font-size: 65px;
-            animation: heartbeat 1.2s infinite;
-        }
-
-        h1 {
-            color: #ff4f87;
-            font-size: 28px;
-            line-height: 1.4;
-        }
-
-        p {
-            color: #86616f;
-            font-size: 16px;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 30px;
-            min-height: 55px;
-        }
-
-        button {
-            border: none;
-            padding: 13px 28px;
-            border-radius: 30px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        #yesBtn {
-            background: #ff5c93;
-            color: white;
-            box-shadow: 0 4px 12px #ffb2ca;
-        }
-
-        #yesBtn:hover {
-            transform: scale(1.1);
-        }
-
-        #noBtn {
-            background: #eee;
-            color: #777;
-        }
-
-        #noBtn.running {
+        .particle {
             position: fixed;
-            z-index: 10;
-            transition: left 0.15s ease, top 0.15s ease;
-        }
-
-        #message {
-            display: none;
-            margin-top: 25px;
-            color: #ff4f87;
-            font-size: 20px;
-            font-weight: bold;
-            line-height: 1.8;
-        }
-
-        .floating-heart {
-            position: fixed;
-            bottom: -40px;
-            font-size: 25px;
+            bottom: -30px;
             pointer-events: none;
-            animation: floatUp 4s linear forwards;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            color: #c7d9c7;
+            opacity: 0;
+            animation: floatUp linear forwards;
+            z-index: 0;
         }
 
         @keyframes floatUp {
-            to {
-                transform: translateY(-110vh) rotate(25deg);
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            85% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
                 opacity: 0;
             }
         }
-    </style>
-</head>
 
-<body>
+        /* Main invitation card */
 
-    <div class="card">
+        .card {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 440px;
+            padding: 35px 25px;
+            text-align: center;
 
-        <div class="heart">💗</div>
+            background: linear-gradient(
+                145deg,
+                rgba(20, 48, 33, 0.97),
+                rgba(8, 25, 16, 0.98)
+            );
 
-        <h1 id="question">
-            Will you go on a date with me? 🥹
-        </h1>
+            border: 2px solid #a7b7a8;
+            border-radius: 12px;
 
-        <div class="buttons" id="buttons">
-            <button id="yesBtn">YES 💖</button>
-            <button id="noBtn">NO 🙈</button>
-        </div>
+            box-shadow:
+                0 0 15px rgba(150, 190, 155, 0.12),
+                0 0 40px rgba(0, 0, 0, 0.5);
 
-        <div id="message">
-            YAYYYYY!! 🥹💗<br>
-            IT'S A DATE THEN! 💐<br>
-            Can't wait to see you! ❤️
-        </div>
-
-    </div>
-
-    <script>
-        const yesBtn = document.getElementById("yesBtn");
-        const noBtn = document.getElementById("noBtn");
-        const question = document.getElementById("question");
-        const subtitle = document.getElementById("subtitle");
-        const buttons = document.getElementById("buttons");
-        const message = document.getElementById("message");
-
-        function moveNoButton() {
-            const padding = 15;
-
-            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
-
-            const x = padding + Math.random() * Math.max(0, maxX - padding);
-            const y = padding + Math.random() * Math.max(0, maxY - padding);
-
-            noBtn.classList.add("running");
-
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
+            animation: appear 1s ease;
         }
 
-        // Make the NO button run away from the mouse.
-        noBtn.addEventListener("pointerenter", moveNoButton);
-
-        // Make it run away when clicked or touched.
-        noBtn.addEventListener("pointerdown", function(event) {
-            event.preventDefault();
-            moveNoButton();
-        });
-
-        noBtn.addEventListener("touchstart", function(event) {
-            event.preventDefault();
-            moveNoButton();
-        }, { passive: false });
-
-        // Celebrate when YES is clicked!
-        yesBtn.addEventListener("click", function() {
-            question.textContent = "YOU SAID YES!! 🥹💖";
-            subtitle.textContent = "You just made me the happiest person!";
-            buttons.style.display = "none";
-            message.style.display = "block";
-
-            for (let i = 0; i < 35; i++) {
-                setTimeout(createHeart, i * 100);
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-        });
 
-        function createHeart() {
-            const heart = document.createElement("div");
-
-            heart.className = "floating-heart";
-
-            const emojis = ["💗", "💖", "💕", "❤️", "🌷"];
-
-            heart.textContent = emojis[
-                Math.floor(Math.random() * emojis.length)
-            ];
-
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration =
-                (3 + Math.random() * 3) + "s";
-
-            document.body.appendChild(heart);
-
-            setTimeout(function() {
-                heart.remove();
-            }, 6000);
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-    </script>
 
-</body>
-</html>
+        /* Decorative border */
+
+        .inner-border {
+            border: 1px solid rgba(192, 205, 192, 0.35);
+            padding: 25px 15px;
+            border-radius: 6px;
+        }
+
+        .snake {
+            font-size: 55px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 0 10px rgba(126, 200, 145, 0.3));
+        }
+
+        .house {
+            font-family: Georgia, serif;
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: #b6c5b6;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            color: #a7b7a8;
+            letter-spacing: 8px;
+            margin: 18px 0;
+        }
+
+        h1 {
+            font-size: 29px;
+            line-height: 1.4;
+            color: #d8e5d5;
+            font-weight: normal;
+            margin: 15px 0;
+            text-shadow: 0 0 15px rgba(157, 207, 164, 0.15);
+        }
+
+        .subtitle {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #bac9bb;
+            margin: 15px 0;
+        }
+
+        .letter {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #d2ddd1;
+            margin: 20px 0;
